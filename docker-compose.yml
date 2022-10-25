@@ -1,0 +1,22 @@
+services:
+  server:
+    image: demo-circuit-breaker-server
+    env_file: ./server/.env
+    ports:
+      - "8081:8081"
+    networks:
+      - demo-network
+
+  client:
+    image: demo-circuit-breaker-client
+    env_file: ./client/.env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "server"
+    networks:
+      - demo-network
+
+networks:
+  demo-network:
+    driver: bridge
