@@ -5,11 +5,11 @@ import (
 )
 
 func CreateServer() *echo.Echo {
-	handler := NewHandler(NewCircuitBreakerRequester())
-	// handler := NewHandler(NewDefaultRequester())
+	handler := NewHandler(NewDefaultRequester())
+	// handler := NewHandler(NewCircuitBreakerRequester())
+	// handler := NewHandler(NewCustomCircuitBreakerRequester())
 
 	e := echo.New()
-	e.GET("/client/ping", handler.HandlePing)
 	e.GET("/client/test", handler.HandleTest)
 
 	return e

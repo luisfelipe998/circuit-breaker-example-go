@@ -28,10 +28,6 @@ func NewHandler(requester Requester) Handler {
 	}
 }
 
-func (h Handler) HandlePing(c echo.Context) error {
-	return c.JSON(http.StatusOK, Response{Ok: true})
-}
-
 func (h Handler) HandleTest(c echo.Context) error {
 	_, err := h.requester.MakeGetRequest("/server/test")
 	if err != nil {
